@@ -1,5 +1,16 @@
 import Link from "next/link";
 
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table"
+
+
 const mockTasks = [
   {
     id: 1,
@@ -31,32 +42,32 @@ export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-4">
-        <h2>Howdy partner</h2>
-        <div className="flex flex-col">
-          <table className="min-w-full justify-center">
-            <thead className="border-b">
-              <tr className="">
-                <th scope="col" className="px-6 py-4">ID</th>
-                <th scope="col" className="px-6 py-4">Name</th>
-                <th scope="col" className="px-6 py-4">Skills</th>
-                <th scope="col" className="px-6 py-4">Task DC</th>
-                <th scope="col" className="px-6 py-4">Total Points</th>
-                <th scope="col" className="px-6 py-4">Points Remaining</th>
-              </tr>
-            </thead>
-            <tbody className="">
-              {mockTasks.map((task) => (
-                <tr key={task.id} className="justify-center border-b">
-                  <td className="px-6 py-4">{task.id}</td>
-                  <td className="px-6 py-4">{task.name}</td>
-                  <td className="px-6 py-4">{task.skills}</td>
-                  <td className="px-6 py-4">{task.dc}</td>
-                  <td className="px-6 py-4">{task.total_points}</td>
-                  <td className="px-6 py-4">{task.points_remaining}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="flex">
+        <Table>
+          <TableCaption>All the downtime activities</TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="text-center">Name</TableHead>
+              <TableHead className="text-center">Skills</TableHead>
+              <TableHead className="text-center">DC</TableHead>
+              <TableHead className="text-center">Total Points</TableHead>
+              <TableHead className="text-center">Points Remaining</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {
+              mockTasks.map((task) => (
+                <TableRow key={task.id}>
+                  <TableCell className="text-center">{task.name}</TableCell>
+                  <TableCell className="text-center">{task.skills}</TableCell>
+                  <TableCell className="text-center">{task.dc}</TableCell>
+                  <TableCell className="text-center">{task.total_points}</TableCell>
+                  <TableCell className="text-center">{task.points_remaining}</TableCell>
+                </TableRow>
+              ))
+            }
+          </TableBody>
+        </Table>
         </div>
       </div>
     </main>
