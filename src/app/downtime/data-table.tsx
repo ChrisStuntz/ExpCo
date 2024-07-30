@@ -63,7 +63,7 @@ interface DataTableProps<TData, TValue> {
             onChange={(event) =>
                 table.getColumn("name")?.setFilterValue(event.target.value)
             }
-            className="max-w-sm"
+            className="max-w-sm text-black"
             />
             <Checkbox id="isCompleted" 
                 onCheckedChange={(checked) => {
