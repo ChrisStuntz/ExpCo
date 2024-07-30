@@ -19,13 +19,12 @@ import { db } from "~/server/db"
 
 export type Task = {
     id: number
-    name: string | null
+    name: string
     skills: string
     task_dc: number
     total_points: number
     points_remaining: number
 }
-
 
 export const columns: ColumnDef<Task>[] = [
   {
@@ -47,6 +46,7 @@ export const columns: ColumnDef<Task>[] = [
   {
       accessorKey: "points_remaining",
       header: "Points Remaining",
+      filterFn: 'inNumberRange',
   },
   {
     id: "actions",
