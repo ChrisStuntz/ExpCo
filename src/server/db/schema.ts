@@ -4,6 +4,7 @@
 import { sql } from "drizzle-orm";
 import {
   index,
+  integer,
   pgTableCreator,
   serial,
   timestamp,
@@ -32,5 +33,51 @@ export const posts = createTable(
   },
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
+  })
+);
+
+export const players = createTable(
+  "player",
+  {
+    id: serial("id").primaryKey(),
+    name: varchar("name", { length: 256 }),
+    discord_name: varchar('discord_name', { length: 256 }),
+  },
+  (example) => ({
+    playerIndex: index("player_idx").on(example.name),
+  })
+);
+
+export const characters = createTable(
+  "character",
+  {
+    id: serial("id").primaryKey(),
+    name: varchar("name", { length: 256 }),
+    player_name: varchar("name", {length: 256 }),
+    ancestry: varchar("ancestry", { length: 256 }),
+    heritate: varchar('heritate', { length: 256 }),
+    background: varchar('background', { length: 256 }),
+    class: varchar("class", { length: 256 }),
+    subclass: varchar("subclass", { length: 256 }),
+    level: integer('level'),
+    xp: integer('xp'),
+  },
+  (example) => ({
+    characterIndex: index("character_idx").on(example.name),
+  })
+);
+
+export const tasks = createTable(
+  "task",
+  {
+    id: serial("id").primaryKey(),
+    name: varchar("name", { length: 256 }),
+    skills: varchar("skills", { length: 256 }),
+    task_dc: integer("task_dc"),
+    total_points: integer("total_points"),
+    points_remaining: integer("points_remaining"),
+  },
+  (example) => ({
+    taskIndex: index("task_idx").on(example.name),
   })
 );
