@@ -71,11 +71,11 @@ export const tasks = createTable(
   "task",
   {
     id: serial("id").primaryKey(),
-    name: varchar("name", { length: 256 }),
-    skills: varchar("skills", { length: 256 }),
-    task_dc: integer("task_dc"),
-    total_points: integer("total_points"),
-    points_remaining: integer("points_remaining"),
+    name: varchar("name", { length: 256 }).notNull(),
+    skills: varchar("skills", { length: 256 }).notNull(),
+    task_dc: integer("task_dc").notNull(),
+    total_points: integer("total_points").notNull(),
+    points_remaining: integer("points_remaining").notNull(),
   },
   (example) => ({
     taskIndex: index("task_idx").on(example.name),
