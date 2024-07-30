@@ -64,6 +64,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground bg-gradient-to-b from-[#424B52] to-[#15162c] text-white;
+    @apply bg-background text-foreground bg-gradient-to-b to-[#424B52] from-[#616E78] text-white;
   }
 }
