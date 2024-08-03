@@ -2,34 +2,7 @@ import { Task, columns } from "./columns"
 import { DataTable } from "./data-table"
 import { db } from "~/server/db"
 
-// async function getData(): Promise<Task[]> {
-//   return [
-//       {
-//         id: 1,
-//         name: "Build Quarry",
-//         skills: "Athletics, Crafting",
-//         task_dc: 15,
-//         total_points: 25,
-//         points_remaining: 8,
-//       },
-//       {
-//         id: 2,
-//         name: "Study Notes",
-//         skills: "Arcana, Occultism",
-//         task_dc: 20,
-//         total_points: 40,
-//         points_remaining: 34,
-//       },
-//       {
-//         id: 3,
-//         name: "Razdius Manual",
-//         skills: "Religion, Acamaya Lore",
-//         task_dc: 22,
-//         total_points: 60,
-//         points_remaining: 23
-//       },
-//     ]
-// }
+export const dynamic = "force-dynamic"
 
 export default async function DowntimePage() {
     // const data = await getData()
