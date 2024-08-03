@@ -2,7 +2,7 @@
 
 import { MoreHorizontal } from "lucide-react"
 
-import { ColumnDef } from "@tanstack/react-table"
+import { ColumnDef, createColumnHelper } from "@tanstack/react-table"
 import { Button } from "~/components/ui/button"
 import {
   DropdownMenu,
@@ -15,6 +15,7 @@ import {
 
 import * as schema from "~/server/db/schema"
 import { db } from "~/server/db"
+import { EditableCell } from "./components/EditableCell"
 
 
 export type Task = {
@@ -25,6 +26,8 @@ export type Task = {
     total_points: number
     points_remaining: number
 }
+
+const columnHelper = createColumnHelper<Task>();
 
 export const columns: ColumnDef<Task>[] = [
   {
@@ -47,6 +50,9 @@ export const columns: ColumnDef<Task>[] = [
       accessorKey: "points_remaining",
       header: "Points Remaining",
       filterFn: 'inNumberRange',
+      meta: {
+        type: "number",
+      },
   },
   {
     id: "actions",
