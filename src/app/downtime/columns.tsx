@@ -13,11 +13,6 @@ import {
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu"
 
-import * as schema from "~/server/db/schema"
-import { db } from "~/server/db"
-import { EditableCell } from "./components/EditableCell"
-
-
 export type Task = {
     id: number
     name: string
