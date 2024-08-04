@@ -14,7 +14,6 @@ import {
 } from "~/components/ui/dropdown-menu"
 import { SignedIn } from "@clerk/nextjs"
 import { DeleteTask } from "./_components/queries"
-import { useRouter } from "next/navigation"
 
 export type Task = {
     id: number
@@ -56,8 +55,6 @@ export const columns: ColumnDef<Task>[] = [
     id: "actions",
     cell: ({ row }) => {
       const task = row.original
-
-      const router = useRouter()
   
       return (
         <DropdownMenu>
