@@ -17,19 +17,26 @@ import {
 
 import { Input } from "~/components/ui/input"
 import { CreateNewTask } from "./_components/queries"
+import { useRouter } from "next/navigation"
+import { DialogFooter, DialogTrigger } from "~/components/ui/dialog"
+import React, { useState } from "react"
 
 const FormSchema = z.object({
-    name: z.string().min(1, {
-      message: "Task Name must be at least 1 character.",
-    }),
-    skills: z.string().min(1, {
-      message: "Skills must be at least 1 character.",
-    }),
-    task_dc: z.number().positive(),
-    total_points: z.number().positive(),
-  })
+  name: z.string().min(1, {
+    message: "Task Name must be at least 1 character.",
+  }),
+  skills: z.string().min(1, {
+    message: "Skills must be at least 1 character.",
+  }),
+  task_dc: z.number().positive(),
+  total_points: z.number().positive(),
+})
   
 export function InputForm() {
+  const router = useRouter();
+
+  const [open, setOpen] = useState(false)
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -48,6 +55,8 @@ export function InputForm() {
       data.total_points,
     )
     console.log("Submitted new task")
+    setOpen(false)
+    router.refresh()
   }
 
   return (
@@ -109,7 +118,9 @@ export function InputForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <DialogTrigger asChild>
+          <Button type="submit">Submit</Button>
+        </DialogTrigger>
       </form>
     </Form>
   )

@@ -1,5 +1,6 @@
 "use server"
 
+import { eq } from "drizzle-orm";
 import { db } from "~/server/db"
 import { tasks } from "~/server/db/schema"
 
@@ -14,4 +15,8 @@ export async function CreateNewTask(task_name: string, task_skills: string, dc: 
 
     return Number(result.rowCount);
 
+}
+
+export async function DeleteTask(task_name: string) {
+    await db.delete(tasks).where(eq(tasks.name, task_name)).returning();
 }

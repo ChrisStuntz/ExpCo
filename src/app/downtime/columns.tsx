@@ -1,6 +1,6 @@
 "use client"
 
-import { MoreHorizontal } from "lucide-react"
+import { Delete, MoreHorizontal } from "lucide-react"
 
 import { ColumnDef, createColumnHelper } from "@tanstack/react-table"
 import { Button } from "~/components/ui/button"
@@ -12,6 +12,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu"
+import { SignedIn } from "@clerk/nextjs"
+import { DeleteTask } from "./_components/queries"
+import { useRouter } from "next/navigation"
 
 export type Task = {
     id: number
@@ -53,6 +56,8 @@ export const columns: ColumnDef<Task>[] = [
     id: "actions",
     cell: ({ row }) => {
       const task = row.original
+
+      const router = useRouter()
   
       return (
         <DropdownMenu>
@@ -69,9 +74,13 @@ export const columns: ColumnDef<Task>[] = [
             >
               Copy Task Name
             </DropdownMenuItem>
+            <SignedIn>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Edit</DropdownMenuItem>
-            <DropdownMenuItem>Delete</DropdownMenuItem>
+            <DropdownMenuItem onClick={() =>
+              DeleteTask(task.name)
+            }>Delete</DropdownMenuItem>
+            </SignedIn>
           </DropdownMenuContent>
         </DropdownMenu>
       )

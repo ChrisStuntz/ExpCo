@@ -55,6 +55,7 @@ interface DataTableProps<TData, TValue> {
     )
 
     const [editedRows, setEditedRows] = React.useState({})
+    const [open, setOpen] = useState(false)
 
     const table = useReactTable({
         data,
@@ -146,7 +147,7 @@ interface DataTableProps<TData, TValue> {
         </div>
         <div>
             <SignedIn>
-            <Dialog>
+            <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
                     <Button variant="outline" className="text-black">Add New Task</Button>
                 </DialogTrigger>
