@@ -9,6 +9,7 @@ import {
 } from "~/components/ui/table"
 
 import Link from 'next/link';
+import { SignedIn } from "@clerk/nextjs";
   
 export default function LeadsPage() {
     const leadsList = [
@@ -30,6 +31,7 @@ export default function LeadsPage() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-center">
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-4">
+                <SignedIn>
                 <Table>
                     <TableCaption>List of Current Leads</TableCaption>
                     <TableHeader>
@@ -49,6 +51,7 @@ export default function LeadsPage() {
                         ))}
                     </TableBody>
                 </Table>
+                </SignedIn>
             </div>
         </main>
     )
