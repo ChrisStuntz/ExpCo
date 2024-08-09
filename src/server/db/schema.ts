@@ -59,6 +59,8 @@ export const characters = createTable(
     background: varchar('background', { length: 256 }),
     class: varchar("class", { length: 256 }),
     subclass: varchar("subclass", { length: 256 }),
+    dedication: varchar("dedication", { length: 256 }),
+    tradition: varchar("tradition", { length: 256 }),
     level: integer('level'),
     xp: integer('xp'),
   },
