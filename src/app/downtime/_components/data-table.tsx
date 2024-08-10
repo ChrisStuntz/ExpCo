@@ -145,6 +145,7 @@ interface DataTableProps<TData, TValue> {
                 </TableBody>
             </Table>
         </div>
+        <br />
         <div>
             <SignedIn>
             <Dialog open={open} onOpenChange={setOpen}>

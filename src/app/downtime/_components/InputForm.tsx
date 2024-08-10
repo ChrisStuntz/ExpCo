@@ -16,7 +16,7 @@ import {
 } from "~/components/ui/form"
 
 import { Input } from "~/components/ui/input"
-import { CreateNewTask } from "./_components/queries"
+import { CreateNewTask } from "./queries"
 import { useRouter } from "next/navigation"
 import { DialogFooter, DialogTrigger } from "~/components/ui/dialog"
 import React, { useState } from "react"

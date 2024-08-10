@@ -1,6 +1,7 @@
 // Example model schema from the Drizzle docs
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
+import { Description } from "@radix-ui/react-toast";
 import { sql } from "drizzle-orm";
 import {
   index,
@@ -83,3 +84,20 @@ export const tasks = createTable(
     taskIndex: index("task_idx").on(example.name),
   })
 );
+
+export const leads = createTable(
+  "lead",
+  {
+    id: serial("id").primaryKey(),
+    name: varchar("name", { length: 256 }).notNull(),
+    status: varchar("status", { length: 256 }).notNull(),
+    type: varchar("type", { length: 256 }).notNull(),
+    session: varchar('session', { length: 256 }).notNull(),
+    session_id: varchar('session_id', { length: 256 }).notNull(),
+    description: varchar('description', { length: 1024 }).notNull(),
+    location: varchar('location', { length: 256 }).notNull(),
+  },
+  (example) => ({
+    leadIndex: index("lead_idx").on(example.name)
+  })
+)

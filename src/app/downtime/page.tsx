@@ -1,7 +1,7 @@
 import { getAllTasks } from "~/server/queries";
-import { Task, columns } from "./columns"
-import { DataTable } from "./data-table"
-import { InputForm } from "./InputForm";
+import { Task, columns } from "./_components/columns"
+import { DataTable } from "./_components/data-table"
+import { InputForm } from "./_components/InputForm";
 
 export const dynamic = "force-dynamic"
 

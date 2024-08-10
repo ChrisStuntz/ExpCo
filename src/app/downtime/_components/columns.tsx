@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu"
 import { SignedIn } from "@clerk/nextjs"
-import { DeleteTask } from "./_components/queries"
+import { DeleteTask } from "./queries"
 
 export type Task = {
     id: number
