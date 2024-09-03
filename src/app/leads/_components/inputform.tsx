@@ -21,6 +21,7 @@ import { useRouter } from "next/navigation"
 import { DialogFooter, DialogTrigger } from "~/components/ui/dialog"
 import React, { useState } from "react"
 import { CreateLead } from "./queries"
+import { leadTypes } from "../data/data"
 
 const FormSchema = z.object({
   name: z.string().min(1, {
@@ -45,33 +46,6 @@ const FormSchema = z.object({
     message: "You have to select at least one item.",
   }),
 })
-
-export const leadTypes = [
-  {
-    id: "battle",
-    label: "Battle",
-  },
-  {
-    id: "exploration",
-    label: "Exploration",
-  },
-  {
-    id: "investigation",
-    label: "Investigation",
-  },
-  {
-    id: "repeatable",
-    label: "Repeatable",
-  },
-  {
-    id: "resource",
-    label: "Resource",
-  },
-  {
-    id: "other",
-    label: "Other",
-  }
-] as const
 
 function arrayToString(arr: string[]) {
   return arr.join(",")
@@ -217,7 +191,10 @@ export function InputForm() {
                           />
                         </FormControl>
                         <FormLabel className="font-normal">
-                          {item.label}
+                          <div className="flex">
+                            <item.icon className="mr-2 h-5 w-5" />
+                            {item.label}
+                          </div>
                         </FormLabel>
                       </FormItem>
                     )

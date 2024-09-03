@@ -3,12 +3,24 @@
 import { SignedIn } from "@clerk/nextjs"
 import {
   ColumnDef,
+  ColumnFiltersState,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   useReactTable,
 } from "@tanstack/react-table"
 
 import { Button } from "~/components/ui/button"
+import { Input } from "~/components/ui/input"
+
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from "~/components/ui/dropdown-menu"
 
 import {
   Dialog,
@@ -28,7 +40,14 @@ import {
   TableHeader,
   TableRow,
 } from "~/components/ui/table"
+
+import {
+  CardStackPlusIcon
+} from "@radix-ui/react-icons"
+
+import { leadTypes } from "../data/data"
 import { InputForm } from "./inputform"
+import * as React from "react"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -39,14 +58,34 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  )
+
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    onColumnFiltersChange: setColumnFilters,
+    getFilteredRowModel: getFilteredRowModel(),
+    state: {
+      columnFilters,
+    },
   })
 
   return (
     <div>
+      <div className="flex flex-row text-black items-center py-4">
+        <Input
+          placeholder="Find in Description..."
+          value={(table.getColumn("description")?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn("description")?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
+      </div>
       <div className="rounded-md border">
         <Table>
           <TableHeader>

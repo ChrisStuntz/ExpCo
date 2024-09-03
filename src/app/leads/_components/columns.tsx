@@ -1,6 +1,16 @@
 "use client"
 import { Badge } from "~/components/ui/badge"
 import { ColumnDef, createColumnHelper } from "@tanstack/react-table"
+import { leadTypes } from "../data/data"
+
+import {
+    CrumpledPaperIcon,
+    GlobeIcon,
+    HobbyKnifeIcon,
+    MagnifyingGlassIcon,
+    QuestionMarkCircledIcon,
+    ReloadIcon
+} from "@radix-ui/react-icons"
 
 export type Lead = {
     id: number
@@ -34,12 +44,14 @@ export const leadsColumns: ColumnDef<Lead>[] = [
       cell: ({ row }) => {
         const lead = row.original
         const tags = stringToArray(lead.type)
+        const typeIcons = tags.map((tag) => leadTypes.find((type) => type.label === tag))
         return (
           <div className="flex flex-col">
-            {tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="mr-2">
-                {tag}
-              </Badge>
+            {typeIcons.map((tag) => (
+              <div className="flex">
+                <tag.icon className="mr-2 h-5 w-5" />
+                {tag.label}
+              </div>
             ))}
           </div>
         )
