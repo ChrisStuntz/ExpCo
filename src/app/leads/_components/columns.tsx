@@ -44,13 +44,13 @@ export const leadsColumns: ColumnDef<Lead>[] = [
       cell: ({ row }) => {
         const lead = row.original
         const tags = stringToArray(lead.type)
-        const typeIcons = tags.map((tag) => leadTypes.find((type) => type.label === tag))
+        const typeIcons = tags.map((newTag) => leadTypes.find((type) => type.label === newTag))
         return (
           <div className="flex flex-col">
             {typeIcons.map((tag) => (
               <div className="flex">
-                <tag.icon className="mr-2 h-5 w-5" />
-                {tag.label}
+                {/* <tag.icon className="mr-2 h-5 w-5" /> */}
+                {tag?.label}
               </div>
             ))}
           </div>
