@@ -48,7 +48,7 @@ export const leadsColumns: ColumnDef<Lead>[] = [
         return (
           <div className="flex flex-col">
             {typeIcons.map((tag) => (
-              <div className="flex">
+              <div className="flex" key={tag?.label}>
                 {/* <tag.icon className="mr-2 h-5 w-5" /> */}
                 {tag?.label}
               </div>
