@@ -1,6 +1,5 @@
 import { buttonVariants } from "~/components/ui/button"
 import { Label } from "~/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import { SignedIn } from "@clerk/nextjs";
 import { DataTable } from "./_components/data-table";
 import { Lead, leadsColumns } from "./_components/columns";
@@ -19,14 +18,6 @@ export default async function LeadsPage() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-center">
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-4">
-                <Collapsible>
-                  <CollapsibleTrigger>
-                    <Label className={buttonVariants({variant: "ghost"})}>Jukros</Label>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <DataTable columns={leadsColumns} data={jukrosData} />
-                  </CollapsibleContent>
-                </Collapsible>
                 <Collapsible>
                   <CollapsibleTrigger>
                     <Label className={buttonVariants({variant: "ghost"})}>Acamaya</Label>
@@ -49,6 +40,14 @@ export default async function LeadsPage() {
                   </CollapsibleTrigger>
                   <CollapsibleContent>
                     <DataTable columns={leadsColumns} data={korhasData} />
+                  </CollapsibleContent>
+                </Collapsible>
+                <Collapsible>
+                  <CollapsibleTrigger>
+                    <Label className={buttonVariants({variant: "ghost"})}>Jukros</Label>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <DataTable columns={leadsColumns} data={jukrosData} />
                   </CollapsibleContent>
                 </Collapsible>
             </div>
