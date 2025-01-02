@@ -11,7 +11,8 @@ export async function CreateLead(
     lead_session: string, 
     lead_session_id: string,
     lead_description: string, 
-    lead_location: string
+    lead_location: string,
+    lead_category: string,
 ): Promise<number> {
     const result = await db.insert(leads).values({
         name: lead_name,
@@ -21,6 +22,7 @@ export async function CreateLead(
         session_id: lead_session_id,
         description: lead_description,
         location: lead_location,
+        category: lead_category,
     })
 
     return Number(result.rowCount);

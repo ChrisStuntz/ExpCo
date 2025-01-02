@@ -1,14 +1,6 @@
-import {
-    Table,
-    TableBody,
-    TableCaption,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "~/components/ui/table"
-
-import Link from 'next/link';
+import { buttonVariants } from "~/components/ui/button"
+import { Label } from "~/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 import { SignedIn } from "@clerk/nextjs";
 import { DataTable } from "./_components/data-table";
 import { Lead, leadsColumns } from "./_components/columns";
@@ -28,25 +20,33 @@ export default async function LeadsPage() {
         <main className="flex min-h-screen flex-col items-center justify-center">
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-4">
                 <Collapsible>
-                  <CollapsibleTrigger>Jukros</CollapsibleTrigger>
+                  <CollapsibleTrigger>
+                    <Label className={buttonVariants({variant: "ghost"})}>Jukros</Label>
+                  </CollapsibleTrigger>
                   <CollapsibleContent>
                     <DataTable columns={leadsColumns} data={jukrosData} />
                   </CollapsibleContent>
                 </Collapsible>
                 <Collapsible>
-                  <CollapsibleTrigger>Acamaya</CollapsibleTrigger>
+                  <CollapsibleTrigger>
+                    <Label className={buttonVariants({variant: "ghost"})}>Acamaya</Label>
+                  </CollapsibleTrigger>
                   <CollapsibleContent>
                     <DataTable columns={leadsColumns} data={acaData} />
                   </CollapsibleContent>
                 </Collapsible>
                 <Collapsible>
-                  <CollapsibleTrigger>Druids</CollapsibleTrigger>
+                  <CollapsibleTrigger>
+                    <Label className={buttonVariants({variant: "ghost"})}>Druids</Label>
+                  </CollapsibleTrigger>
                   <CollapsibleContent>
                     <DataTable columns={leadsColumns} data={druidData} />
                   </CollapsibleContent>
                 </Collapsible>
                 <Collapsible>
-                  <CollapsibleTrigger>Korhas</CollapsibleTrigger>
+                  <CollapsibleTrigger>
+                    <Label className={buttonVariants({variant: "ghost"})}>Korhas</Label>
+                  </CollapsibleTrigger>
                   <CollapsibleContent>
                     <DataTable columns={leadsColumns} data={korhasData} />
                   </CollapsibleContent>

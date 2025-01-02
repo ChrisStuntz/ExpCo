@@ -22,6 +22,7 @@ import { DialogFooter, DialogTrigger } from "~/components/ui/dialog"
 import React, { useState } from "react"
 import { CreateLead } from "./queries"
 import { leadTypes } from "../data/data"
+import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
 
 const FormSchema = z.object({
   name: z.string().min(1, {
@@ -45,6 +46,9 @@ const FormSchema = z.object({
   type: z.array(z.string()).refine((value) => value.some((item) => item), {
     message: "You have to select at least one item.",
   }),
+  category: z.enum(["Acamaya", "Druids", "Korhas", "Jukros"], {
+    message: "Please select a category",
+  }),
 })
 
 function arrayToString(arr: string[]) {
@@ -66,6 +70,7 @@ export function InputForm() {
       session: "",
       session_id: "",
       location: "",
+      category: "Korhas",
     },
   })
 
@@ -78,6 +83,7 @@ export function InputForm() {
       data.session_id,
       data.description,
       data.location,
+      data.category,
     )
     console.log("Submitted new task")
     setOpen(false)
@@ -205,6 +211,48 @@ export function InputForm() {
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name="category"
+          render={({ field }) => (
+            <FormItem className="space-y-3">
+              <FormLabel className="text-black">Category</FormLabel>
+              <FormDescription>High level category of the lead</FormDescription>
+              <FormControl>
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className="flex flex-col space-y-3"
+                >
+                  <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormControl>
+                      <RadioGroupItem className="text-black" value="Acamaya" />
+                    </FormControl>
+                    <FormLabel className="text-black">Acamaya</FormLabel>
+                  </FormItem>
+                  <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormControl>
+                      <RadioGroupItem className="text-black" value="Druids" />
+                    </FormControl>
+                    <FormLabel className="text-black">Druids</FormLabel>
+                  </FormItem>
+                  <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormControl>
+                      <RadioGroupItem className="text-black" value="Korhas" />
+                    </FormControl>
+                    <FormLabel className="text-black">Korhas</FormLabel>
+                  </FormItem>
+                  <FormItem className="flex items-center space-x-3 space-y-0">
+                    <FormControl>
+                      <RadioGroupItem className="text-black" value="Jukros" />
+                    </FormControl>
+                    <FormLabel className="text-black">Jukros</FormLabel>
+                  </FormItem>
+                </RadioGroup>
+              </FormControl>
+            </FormItem>
+          )}
+          />
         <DialogTrigger asChild>
           <Button type="submit">Submit</Button>
         </DialogTrigger>
