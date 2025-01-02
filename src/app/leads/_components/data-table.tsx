@@ -14,19 +14,9 @@ import { Button } from "~/components/ui/button"
 import { Input } from "~/components/ui/input"
 
 import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger
-} from "~/components/ui/dropdown-menu"
-
-import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -41,11 +31,6 @@ import {
   TableRow,
 } from "~/components/ui/table"
 
-import {
-  CardStackPlusIcon
-} from "@radix-ui/react-icons"
-
-import { leadTypes } from "../data/data"
 import { InputForm } from "./inputform"
 import * as React from "react"
 

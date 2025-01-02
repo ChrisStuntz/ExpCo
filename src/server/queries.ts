@@ -1,5 +1,6 @@
 import "server-only"
 
+import { eq } from "drizzle-orm"
 import { db } from "./db"
 
 export async function getAllTasks() {
@@ -8,4 +9,10 @@ export async function getAllTasks() {
 
 export async function getAllLeads() {
     return db.query.leads.findMany();
+}
+
+export async function getCategoryLeads(c: string) {
+  return db.query.leads.findMany({
+    where: (leads, { eq }) => (eq(leads.category, c))
+  })
 }

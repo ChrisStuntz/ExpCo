@@ -39,3 +39,22 @@ export const leadTypes = [
     icon: QuestionMarkCircledIcon,
   }
 ]
+
+export const leadCategories = [
+  {
+    id: "korhas",
+    label: "Korhas",
+  },
+  {
+    id: "expeditionco",
+    label: "ExpeditionCo",
+  },
+  {
+    id: "acamaya",
+    label: "Acamaya",
+  },
+  {
+    id: "jukros",
+    label: "Jukros",
+  }
+]

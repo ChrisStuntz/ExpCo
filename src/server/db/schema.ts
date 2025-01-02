@@ -96,6 +96,7 @@ export const leads = createTable(
     session_id: varchar('session_id', { length: 256 }).notNull(),
     description: varchar('description', { length: 1024 }).notNull(),
     location: varchar('location', { length: 256 }).notNull(),
+    category: varchar('category', { length: 256 }).default("Acamaya").notNull(),
   },
   (example) => ({
     leadIndex: index("lead_idx").on(example.name)
